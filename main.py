@@ -1,4 +1,5 @@
 import random
+import sqlite3
 
 uppercase_letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 lowercase_letters = uppercase_letters.lower()
@@ -20,7 +21,26 @@ if syms:
 length = 8 # the length of characters in the password
 amount = 1 # the number of passwords one can generate
 
+# Database setup
+connect = sqlite3.connect('passwords.db')
+c = connect.cursor()
+
+# Create table if not exists
+c.execute('''
+    CREATE TABLE IF NOT EXISTS passwords (
+        id INTEGER PRIMARY KEY AUTOINCREMENT,
+        password TEXT NOT NULL
+    )
+''')
+
+# Generate passwords and store them in the database
+
 for x in range(amount):
     passwrd = "".join(random.sample(all, length))
     print(passwrd)
+
+    c.execute('Insert into passwords (password) values (?)', (passwrd,))
+
+connect.commit()
+connect.close()
     
