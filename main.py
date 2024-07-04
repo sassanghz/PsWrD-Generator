@@ -19,7 +19,7 @@ if syms:
     all += symbols
 
 length = 8 # the length of characters in the password
-amount = 1 # the number of passwords one can generate
+amount = 10 # the number of passwords one can generate
 
 # Database setup
 connect = sqlite3.connect('passwords.db')
