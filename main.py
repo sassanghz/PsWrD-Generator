@@ -17,8 +17,8 @@ if nums:
 if syms:
     all += symbols
 
-length = 20 # the length of characters in the password
-amount = 10 # the number of passwords one can generate
+length = 8 # the length of characters in the password
+amount = 1 # the number of passwords one can generate
 
 for x in range(amount):
     passwrd = "".join(random.sample(all, length))
