@@ -1,5 +1,6 @@
 import random
 import sqlite3
+from datetime import datetime
 
 uppercase_letters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 lowercase_letters = uppercase_letters.lower()
@@ -37,6 +38,8 @@ c.execute('''
 
 for x in range(amount):
     passwrd = "".join(random.sample(all, length))
+    created = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+    tag = "example_tag"
     print(passwrd)
 
     c.execute('Insert into passwords (password) values (?)', (passwrd,))
