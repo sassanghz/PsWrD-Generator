@@ -5,17 +5,17 @@ lowercase_letters = uppercase_letters.lower()
 digits = "0123456789"
 symbols = "()[]{},;:.- /\\?+*# "
 
-upper, lower, nums, syms = True, True, True, True
+upper, lower, nums, syms = True, True, True, True # Can set as false and the compiler will not include the specific characters in the password
 all = ""
 
 if upper:
     all += uppercase_letters
-else:
+if lower:
     all += lowercase_letters
 if nums:
-    all += nums
-else:
-    all += syms
+    all += digits
+if syms:
+    all += symbols
 
 length = 20 # the length of characters in the password
 amount = 10 # the number of passwords one can generate
