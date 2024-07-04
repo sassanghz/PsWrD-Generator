@@ -8,7 +8,7 @@ lowercase_letters = uppercase_letters.lower()
 digits = "0123456789"
 symbols = "()[]{},;:.- /\\?+*# "
 
-# Configuration for character inclusion
+# Config
 upper, lower, nums, syms = True, True, True, True
 all = ""
 
@@ -28,10 +28,10 @@ amount = 10  # The number of passwords to generate
 connect = sqlite3.connect('passwords.db')
 c = connect.cursor()
 
-# Drop the existing table if it exists
+# drop table if it already exists
 c.execute('DROP TABLE IF EXISTS passwords')
 
-# Create table with new schema
+# table creation
 c.execute('''
     CREATE TABLE IF NOT EXISTS passwords (
         id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -41,11 +41,11 @@ c.execute('''
     )
 ''')
 
-# Generate passwords and store them in the database
+# password generation 
 for x in range(amount):
     password = "".join(random.sample(all, length))
     created = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-    tag = "example_tag" # this can be modified
+    tag = "password" # this can be modified
     print(password)
 
     # Insert password with metadata into the database
