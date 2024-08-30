@@ -53,3 +53,5 @@ for x in range(amount):
 
 connect.commit()
 connect.close()
+
+# create a new way to have the user type in the password
